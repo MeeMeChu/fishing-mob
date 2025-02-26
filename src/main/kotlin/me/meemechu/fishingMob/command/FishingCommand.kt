@@ -11,8 +11,10 @@ class FishingCommand(private val plugin: FishingMob) : CommandExecutor{
 
   override fun onCommand(sender: CommandSender, command: Command, label: String, args: Array<out String>): Boolean {
     val usageMessage = """
+      §7- §eFishingMob by MeeMeChu §7-
+      
       §aUsage:
-      /fishingmob reload
+      > /fishingmob reload
     """.trimIndent()
 
     if (args.isEmpty()) {
