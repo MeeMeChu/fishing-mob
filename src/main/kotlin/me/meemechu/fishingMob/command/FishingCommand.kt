@@ -1,6 +1,7 @@
 package me.meemechu.fishingMob.command
 
 import me.meemechu.fishingMob.FishingMob
+import me.meemechu.fishingMob.utils.Color
 import net.kyori.adventure.text.Component
 import org.bukkit.command.Command
 import org.bukkit.command.CommandExecutor
@@ -9,9 +10,11 @@ import org.bukkit.entity.Player
 
 class FishingCommand(private val plugin: FishingMob) : CommandExecutor{
 
+  private val prefix = plugin.config.getString("prefix", "&aFishingMob") ?: "&aFishingMob"
+
   override fun onCommand(sender: CommandSender, command: Command, label: String, args: Array<out String>): Boolean {
-    val usageMessage = """
-      §7- §eFishingMob by MeeMeChu §7-
+    val usageMessage: String = """
+      §7- §e$prefix by MeeMeChu §7-
       
       §aUsage:
       > /fishingmob reload
@@ -25,13 +28,13 @@ class FishingCommand(private val plugin: FishingMob) : CommandExecutor{
     when {
       args[0].equals("reload", true) -> {
         if (sender is Player && !sender.isOp) {
-          sender.sendMessage("§aFishingMob -> §fYou do not have permission to reload the config.")
+          Color.sendColoredMessage(sender,"$prefix &8-> &fYou do not have permission to reload the config.")
           return true
         }
 
         plugin.reloadConfig()
         plugin.loadConfig()
-        sender.sendMessage("§aFishingMob -> Plugin config reloaded successfully!")
+        Color.sendColoredMessage(sender,"$prefix &8-> &fPlugin config reloaded successfully!")
       }
     }
 

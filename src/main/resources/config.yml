@@ -1,0 +1,7 @@
+prefix: "&aFishingMob"
+fishing:
+  spawn-chance: 0.9
+  monsters:
+    ZOMBIE: 0.4
+  mythicmobs:
+    SkeletalKnight: 0.9
